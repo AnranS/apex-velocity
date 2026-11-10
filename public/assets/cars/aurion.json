@@ -1,0 +1,92 @@
+{
+ "id": "aurion",
+ "displayName": "AURION S8",
+ "length": 4.65,
+ "width": 1.988,
+ "widthWithMirrors": 2.146,
+ "height": 1.203,
+ "roofHeight": 1.203,
+ "wheelbase": 2.7,
+ "axleFrontZ": 1.35,
+ "axleRearZ": -1.35,
+ "trackFront": 1.68,
+ "trackRear": 1.66,
+ "wheelRadiusFront": 0.335,
+ "wheelRadiusRear": 0.35,
+ "wheelWidthFront": 0.25,
+ "wheelWidthRear": 0.31,
+ "rideHeight": 0.1154,
+ "bodyBox": {
+  "min": [
+   -1.0725,
+   0.088,
+   -2.24
+  ],
+  "max": [
+   1.0728,
+   1.203,
+   2.4103
+  ]
+ },
+ "points": {
+  "headlightL": [
+   0.74,
+   0.6,
+   2.06
+  ],
+  "headlightR": [
+   -0.74,
+   0.6,
+   2.06
+  ],
+  "taillightL": [
+   0.62,
+   0.81,
+   -2.2
+  ],
+  "taillightR": [
+   -0.62,
+   0.81,
+   -2.2
+  ],
+  "exhaustL": [
+   0.15,
+   0.585,
+   -2.25
+  ],
+  "exhaustR": [
+   -0.15,
+   0.585,
+   -2.25
+  ],
+  "camHood": [
+   0.0,
+   0.92,
+   1.02
+  ],
+  "camCockpit": [
+   0.37,
+   0.99,
+   -0.18
+  ],
+  "camBumper": [
+   0.0,
+   0.42,
+   2.41
+  ],
+  "wingCenter": [
+   0.0,
+   0.975,
+   -2.08
+  ]
+ },
+ "triangles": {
+  "lod0": 150495,
+  "lod1": 17439
+ },
+ "defaultPaint": [
+  0.55,
+  0.03,
+  0.03
+ ]
+}

@@ -1,0 +1,92 @@
+{
+ "id": "valken",
+ "displayName": "VALKEN GT",
+ "length": 4.78,
+ "width": 1.955,
+ "widthWithMirrors": 2.15,
+ "height": 1.31,
+ "roofHeight": 1.31,
+ "wheelbase": 2.75,
+ "axleFrontZ": 1.375,
+ "axleRearZ": -1.375,
+ "trackFront": 1.64,
+ "trackRear": 1.65,
+ "wheelRadiusFront": 0.345,
+ "wheelRadiusRear": 0.355,
+ "wheelWidthFront": 0.265,
+ "wheelWidthRear": 0.305,
+ "rideHeight": 0.1559,
+ "bodyBox": {
+  "min": [
+   -1.0749,
+   0.125,
+   -2.48
+  ],
+  "max": [
+   1.075,
+   1.3102,
+   2.2995
+  ]
+ },
+ "points": {
+  "headlightL": [
+   0.75,
+   0.61,
+   2.2
+  ],
+  "headlightR": [
+   -0.75,
+   0.61,
+   2.2
+  ],
+  "taillightL": [
+   0.62,
+   0.78,
+   -2.43
+  ],
+  "taillightR": [
+   -0.62,
+   0.78,
+   -2.43
+  ],
+  "exhaustL": [
+   0.57,
+   0.335,
+   -2.41
+  ],
+  "exhaustR": [
+   -0.57,
+   0.335,
+   -2.41
+  ],
+  "camHood": [
+   0.0,
+   1.03,
+   0.55
+  ],
+  "camCockpit": [
+   0.36,
+   1.09,
+   -0.58
+  ],
+  "camBumper": [
+   0.0,
+   0.5,
+   2.33
+  ],
+  "wingCenter": [
+   0.0,
+   0.99,
+   -2.42
+  ]
+ },
+ "triangles": {
+  "lod0": 149631,
+  "lod1": 16703
+ },
+ "defaultPaint": [
+  0.02,
+  0.07,
+  0.3
+ ]
+}

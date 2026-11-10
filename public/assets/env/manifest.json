@@ -1,0 +1,1067 @@
+{
+ "version": 1,
+ "generated": "2026-11-10",
+ "generator": "tools/env/build_manifest.py",
+ "conventions": {
+  "axes": "glTF: +Y up, metres. Origin = ground centre (trunk base for trees). 'Front' of props = +Z (grandstand seats, pit garages, gantry start lights and billboard face +Z).",
+  "uv": "glTF UVs (v = 0 at the image top): load the shared textures with flipY = false. GLBs carry no images; assign textures from this manifest per material name. baseColorFactor is white on textured materials.",
+  "normalMaps": "OpenGL convention (+Y / green up). Rocks ship a TANGENT attribute (MikkTSpace, matches the bake). Foliage/bark have no tangents: with derivative tangents and flipY = false use normalScale.y = -1 (what GLTFLoader does).",
+  "treeVertexColor": "COLOR_0 (linear, 8-bit): R = wind sway weight (0 at the trunk base -> 1 at branch / leaf tips), G = per-branch phase 0..1 (0 on the trunk), B = ambient occlusion (darker deep inside the crown). grass_tuft / bush_a use the same channels. Do NOT multiply the albedo by COLOR_0.rgb.",
+  "foliageNormals": "Foliage normals are 'puffed' (outward from the crown, same on both faces). Render the cards double-sided WITHOUT flipping the normal on back faces; alpha-test 0.5 (alpha is pre-gained) or alpha-to-coverage.",
+  "propVertexColor": "COLOR_0 = baked ambient occlusion as grayscale (R = G = B), includes ground occlusion. Multiply ambient / diffuse by it.",
+  "impostor": "<id>_imp.webp: `views` azimuth views side by side in one row (view k occupies u in [k/views, (k+1)/views]), orthographic, colour = albedo with soft ambient shading, RGB dilated under alpha. View k is seen from azimuth k*45 deg around +Y measured from +Z toward +X, i.e. camera direction from the trunk = (sin a, 0, cos a); pick k = round(atan2(dx, dz) / 45deg) mod 8 in the tree's local frame. Quad size = worldWidth x worldHeight, pivot bottom-centre on the tree origin, image right = camera right. width/height = whole atlas in pixels, viewWidth/viewHeight = one view. <id>_imp_n.webp holds view-space normals (x right, y up, z toward the camera, encoded n*0.5+0.5; z may be < 0 at the rim).",
+  "crowd": "grandstand `crowd` cards: u repeats every 8 m (16 seats per texture repeat, random start per row), v 0 top -> 1 bottom; crowd_atlas.webp is RGBA (alpha cutout), tint/offset freely.",
+  "startLights": "gantry materials startlight_0..4 (left to right seen from +Z): dark red lenses, drive emissive.",
+  "flag": "flag_pole.glb has two nodes: `flag_pole` and `flag` (12x8 grid, UV 0..1 with u = 0 at the pole) for animation."
+ },
+ "assets": [
+  {
+   "id": "pine_a",
+   "kind": "tree",
+   "lods": [
+    {
+     "file": "pine_a_lod0.glb",
+     "triangles": 5088,
+     "vertices": 6518,
+     "bytes": 267576
+    },
+    {
+     "file": "pine_a_lod1.glb",
+     "triangles": 1148,
+     "vertices": 1565,
+     "bytes": 65616
+    }
+   ],
+   "impostor": {
+    "file": "pine_a_imp.webp",
+    "normal": "pine_a_imp_n.webp",
+    "views": 8,
+    "width": 1632,
+    "height": 512,
+    "viewWidth": 204,
+    "viewHeight": 512,
+    "worldWidth": 7.929,
+    "worldHeight": 19.9,
+    "layout": "row",
+    "pivot": "bottom-center",
+    "azimuthStepDeg": 45.0
+   },
+   "size": [
+    7.752,
+    19.803,
+    7.541
+   ],
+   "bounds": {
+    "min": [
+     -3.822,
+     -0.003,
+     -3.87
+    ],
+    "max": [
+     3.93,
+     19.8,
+     3.671
+    ]
+   },
+   "materials": [
+    "bark",
+    "leaves"
+   ],
+   "textures": {
+    "leaves": {
+     "albedo": "foliage_atlas.webp",
+     "normal": "foliage_atlas_n.webp"
+    },
+    "bark": {
+     "albedo": "bark_pine.webp",
+     "normal": "bark_pine_n.webp"
+    }
+   },
+   "source": "procedural",
+   "textureSources": [
+    {
+     "name": "Pine Bark (Poly Haven)",
+     "url": "https://polyhaven.com/a/pine_bark",
+     "license": "CC0-1.0"
+    }
+   ]
+  },
+  {
+   "id": "pine_b",
+   "kind": "tree",
+   "lods": [
+    {
+     "file": "pine_b_lod0.glb",
+     "triangles": 4626,
+     "vertices": 6111,
+     "bytes": 250156
+    },
+    {
+     "file": "pine_b_lod1.glb",
+     "triangles": 884,
+     "vertices": 1522,
+     "bytes": 62484
+    }
+   ],
+   "impostor": {
+    "file": "pine_b_imp.webp",
+    "normal": "pine_b_imp_n.webp",
+    "views": 8,
+    "width": 2048,
+    "height": 316,
+    "viewWidth": 256,
+    "viewHeight": 316,
+    "worldWidth": 13.25,
+    "worldHeight": 16.355,
+    "layout": "row",
+    "pivot": "bottom-center",
+    "azimuthStepDeg": 45.0
+   },
+   "size": [
+    10.199,
+    16.465,
+    11.925
+   ],
+   "bounds": {
+    "min": [
+     -6.012,
+     -0.003,
+     -6.186
+    ],
+    "max": [
+     4.186,
+     16.462,
+     5.739
+    ]
+   },
+   "materials": [
+    "bark",
+    "leaves"
+   ],
+   "textures": {
+    "leaves": {
+     "albedo": "foliage_atlas.webp",
+     "normal": "foliage_atlas_n.webp"
+    },
+    "bark": {
+     "albedo": "bark_pine.webp",
+     "normal": "bark_pine_n.webp"
+    }
+   },
+   "source": "procedural",
+   "textureSources": [
+    {
+     "name": "Pine Bark (Poly Haven)",
+     "url": "https://polyhaven.com/a/pine_bark",
+     "license": "CC0-1.0"
+    }
+   ]
+  },
+  {
+   "id": "broadleaf_a",
+   "kind": "tree",
+   "lods": [
+    {
+     "file": "broadleaf_a_lod0.glb",
+     "triangles": 6188,
+     "vertices": 8430,
+     "bytes": 343028
+    },
+    {
+     "file": "broadleaf_a_lod1.glb",
+     "triangles": 1020,
+     "vertices": 1822,
+     "bytes": 74108
+    }
+   ],
+   "impostor": {
+    "file": "broadleaf_a_imp.webp",
+    "normal": "broadleaf_a_imp_n.webp",
+    "views": 8,
+    "width": 2048,
+    "height": 304,
+    "viewWidth": 256,
+    "viewHeight": 304,
+    "worldWidth": 12.399,
+    "worldHeight": 14.724,
+    "layout": "row",
+    "pivot": "bottom-center",
+    "azimuthStepDeg": 45.0
+   },
+   "size": [
+    11.295,
+    14.524,
+    12.022
+   ],
+   "bounds": {
+    "min": [
+     -5.819,
+     -0.004,
+     -5.978
+    ],
+    "max": [
+     5.476,
+     14.52,
+     6.044
+    ]
+   },
+   "materials": [
+    "bark",
+    "leaves"
+   ],
+   "textures": {
+    "leaves": {
+     "albedo": "foliage_atlas.webp",
+     "normal": "foliage_atlas_n.webp"
+    },
+    "bark": {
+     "albedo": "bark_oak.webp",
+     "normal": "bark_oak_n.webp"
+    }
+   },
+   "source": "procedural",
+   "textureSources": [
+    {
+     "name": "Jolcham Oak Bark 01 (Poly Haven)",
+     "url": "https://polyhaven.com/a/jolcham_oak_bark_01",
+     "license": "CC0-1.0"
+    }
+   ]
+  },
+  {
+   "id": "broadleaf_b",
+   "kind": "tree",
+   "lods": [
+    {
+     "file": "broadleaf_b_lod0.glb",
+     "triangles": 5030,
+     "vertices": 6686,
+     "bytes": 273300
+    },
+    {
+     "file": "broadleaf_b_lod1.glb",
+     "triangles": 884,
+     "vertices": 1550,
+     "bytes": 63508
+    }
+   ],
+   "impostor": {
+    "file": "broadleaf_b_imp.webp",
+    "normal": "broadleaf_b_imp_n.webp",
+    "views": 8,
+    "width": 2048,
+    "height": 384,
+    "viewWidth": 256,
+    "viewHeight": 384,
+    "worldWidth": 7.208,
+    "worldHeight": 10.813,
+    "layout": "row",
+    "pivot": "bottom-center",
+    "azimuthStepDeg": 45.0
+   },
+   "size": [
+    6.61,
+    11.02,
+    7.223
+   ],
+   "bounds": {
+    "min": [
+     -3.23,
+     -0.003,
+     -3.887
+    ],
+    "max": [
+     3.38,
+     11.017,
+     3.336
+    ]
+   },
+   "materials": [
+    "bark",
+    "leaves"
+   ],
+   "textures": {
+    "leaves": {
+     "albedo": "foliage_atlas.webp",
+     "normal": "foliage_atlas_n.webp"
+    },
+    "bark": {
+     "albedo": "bark_birch.webp",
+     "normal": "bark_birch_n.webp"
+    }
+   },
+   "source": "procedural",
+   "textureSources": [
+    {
+     "name": "Bark Platanus (Poly Haven), recoloured",
+     "url": "https://polyhaven.com/a/bark_platanus",
+     "license": "CC0-1.0"
+    },
+    {
+     "name": "Bark Platanus (Poly Haven)",
+     "url": "https://polyhaven.com/a/bark_platanus",
+     "license": "CC0-1.0"
+    }
+   ]
+  },
+  {
+   "id": "grass_tuft",
+   "kind": "cover",
+   "lods": [
+    {
+     "file": "grass_tuft.glb",
+     "triangles": 12,
+     "vertices": 18,
+     "bytes": 2072
+    }
+   ],
+   "impostor": null,
+   "size": [
+    0.804,
+    0.493,
+    0.771
+   ],
+   "bounds": {
+    "min": [
+     -0.405,
+     -0.0,
+     -0.411
+    ],
+    "max": [
+     0.399,
+     0.493,
+     0.36
+    ]
+   },
+   "materials": [
+    "grass"
+   ],
+   "textures": {
+    "grass": {
+     "albedo": "grass_atlas.webp"
+    }
+   },
+   "source": "procedural"
+  },
+  {
+   "id": "bush_a",
+   "kind": "cover",
+   "lods": [
+    {
+     "file": "bush_a.glb",
+     "triangles": 194,
+     "vertices": 388,
+     "bytes": 16492
+    }
+   ],
+   "impostor": null,
+   "size": [
+    2.001,
+    1.574,
+    2.067
+   ],
+   "bounds": {
+    "min": [
+     -1.038,
+     -0.148,
+     -1.109
+    ],
+    "max": [
+     0.963,
+     1.426,
+     0.957
+    ]
+   },
+   "materials": [
+    "leaves"
+   ],
+   "textures": {
+    "leaves": {
+     "albedo": "foliage_atlas.webp",
+     "normal": "foliage_atlas_n.webp"
+    }
+   },
+   "source": "procedural"
+  },
+  {
+   "id": "rock_a",
+   "kind": "rock",
+   "lods": [
+    {
+     "file": "rock_a.glb",
+     "triangles": 1125,
+     "vertices": 1426,
+     "bytes": 76488
+    }
+   ],
+   "impostor": null,
+   "size": [
+    1.599,
+    1.102,
+    2.234
+   ],
+   "bounds": {
+    "min": [
+     -0.801,
+     0.0,
+     -1.092
+    ],
+    "max": [
+     0.798,
+     1.102,
+     1.142
+    ]
+   },
+   "materials": [
+    "rock"
+   ],
+   "textures": {
+    "rock": {
+     "albedo": "rock_a_d.webp",
+     "normal": "rock_a_n.webp"
+    }
+   },
+   "source": {
+    "name": "Boulder 01 (Poly Haven photoscan, decimated + rebaked, albedo neutralised)",
+    "url": "https://polyhaven.com/a/boulder_01",
+    "license": "CC0-1.0"
+   }
+  },
+  {
+   "id": "rock_b",
+   "kind": "rock",
+   "lods": [
+    {
+     "file": "rock_b.glb",
+     "triangles": 892,
+     "vertices": 759,
+     "bytes": 43084
+    }
+   ],
+   "impostor": null,
+   "size": [
+    1.677,
+    1.288,
+    3.202
+   ],
+   "bounds": {
+    "min": [
+     -0.844,
+     -0.0,
+     -1.604
+    ],
+    "max": [
+     0.833,
+     1.288,
+     1.597
+    ]
+   },
+   "materials": [
+    "rock"
+   ],
+   "textures": {
+    "rock": {
+     "albedo": "rock_b_d.webp",
+     "normal": "rock_b_n.webp"
+    }
+   },
+   "source": {
+    "name": "Rock 07 (Poly Haven photoscan, decimated + rebaked, albedo neutralised)",
+    "url": "https://polyhaven.com/a/rock_07",
+    "license": "CC0-1.0"
+   }
+  },
+  {
+   "id": "rock_c",
+   "kind": "rock",
+   "lods": [
+    {
+     "file": "rock_c.glb",
+     "triangles": 1118,
+     "vertices": 886,
+     "bytes": 50536
+    }
+   ],
+   "impostor": null,
+   "size": [
+    2.511,
+    1.775,
+    2.497
+   ],
+   "bounds": {
+    "min": [
+     -1.256,
+     -0.0,
+     -1.258
+    ],
+    "max": [
+     1.255,
+     1.775,
+     1.239
+    ]
+   },
+   "materials": [
+    "rock"
+   ],
+   "textures": {
+    "rock": {
+     "albedo": "rock_c_d.webp",
+     "normal": "rock_c_n.webp"
+    }
+   },
+   "source": {
+    "name": "Namaqualand Boulder 04 (Poly Haven photoscan, decimated + rebaked, albedo neutralised)",
+    "url": "https://polyhaven.com/a/namaqualand_boulder_04",
+    "license": "CC0-1.0"
+   }
+  },
+  {
+   "id": "grandstand",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "grandstand.glb",
+     "triangles": 6608,
+     "vertices": 13216,
+     "bytes": 522888
+    }
+   ],
+   "impostor": null,
+   "size": [
+    24.05,
+    10.92,
+    13.0
+   ],
+   "bounds": {
+    "min": [
+     -12.025,
+     0.0,
+     -6.7
+    ],
+    "max": [
+     12.025,
+     10.92,
+     6.3
+    ]
+   },
+   "materials": [
+    "concrete",
+    "crowd",
+    "panel",
+    "panel_dark",
+    "seats",
+    "steel",
+    "steel_dark"
+   ],
+   "textures": {
+    "crowd": {
+     "albedo": "crowd_atlas.webp"
+    }
+   },
+   "source": "procedural"
+  },
+  {
+   "id": "pit_building",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "pit_building.glb",
+     "triangles": 1356,
+     "vertices": 2712,
+     "bytes": 113032
+    }
+   ],
+   "impostor": null,
+   "size": [
+    12.07,
+    9.1,
+    11.74
+   ],
+   "bounds": {
+    "min": [
+     -6.035,
+     0.0,
+     -5.3
+    ],
+    "max": [
+     6.035,
+     9.1,
+     6.44
+    ]
+   },
+   "materials": [
+    "concrete",
+    "garage_door",
+    "glass",
+    "panel",
+    "panel_dark",
+    "steel",
+    "steel_dark"
+   ],
+   "textures": {},
+   "source": "procedural"
+  },
+  {
+   "id": "gantry",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "gantry.glb",
+     "triangles": 3046,
+     "vertices": 6162,
+     "bytes": 249792
+    }
+   ],
+   "impostor": null,
+   "size": [
+    20.9,
+    9.68,
+    1.77
+   ],
+   "bounds": {
+    "min": [
+     -10.45,
+     0.0,
+     -0.85
+    ],
+    "max": [
+     10.45,
+     9.68,
+     0.92
+    ]
+   },
+   "materials": [
+    "ad",
+    "concrete",
+    "startlight_0",
+    "startlight_1",
+    "startlight_2",
+    "startlight_3",
+    "startlight_4",
+    "steel",
+    "steel_dark"
+   ],
+   "textures": {},
+   "source": "procedural"
+  },
+  {
+   "id": "billboard",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "billboard.glb",
+     "triangles": 366,
+     "vertices": 732,
+     "bytes": 32824
+    }
+   ],
+   "impostor": null,
+   "size": [
+    8.16,
+    3.781,
+    2.0
+   ],
+   "bounds": {
+    "min": [
+     -4.08,
+     -0.001,
+     -1.9
+    ],
+    "max": [
+     4.08,
+     3.78,
+     0.1
+    ]
+   },
+   "materials": [
+    "ad",
+    "concrete",
+    "steel",
+    "steel_dark"
+   ],
+   "textures": {},
+   "source": "procedural"
+  },
+  {
+   "id": "light_tower",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "light_tower.glb",
+     "triangles": 544,
+     "vertices": 1098,
+     "bytes": 47104
+    }
+   ],
+   "impostor": null,
+   "size": [
+    3.6,
+    22.418,
+    1.766
+   ],
+   "bounds": {
+    "min": [
+     -1.8,
+     0.0,
+     -0.767
+    ],
+    "max": [
+     1.8,
+     22.418,
+     0.998
+    ]
+   },
+   "materials": [
+    "concrete",
+    "lamp",
+    "steel",
+    "steel_dark"
+   ],
+   "textures": {},
+   "source": "procedural"
+  },
+  {
+   "id": "marshal_post",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "marshal_post.glb",
+     "triangles": 392,
+     "vertices": 784,
+     "bytes": 34956
+    }
+   ],
+   "impostor": null,
+   "size": [
+    2.8,
+    3.15,
+    3.4
+   ],
+   "bounds": {
+    "min": [
+     -1.4,
+     0.0,
+     -2.13
+    ],
+    "max": [
+     1.4,
+     3.15,
+     1.27
+    ]
+   },
+   "materials": [
+    "marshal_orange",
+    "panel",
+    "panel_dark",
+    "steel"
+   ],
+   "textures": {},
+   "source": "procedural"
+  },
+  {
+   "id": "tire_stack",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "tire_stack.glb",
+     "triangles": 480,
+     "vertices": 960,
+     "bytes": 39792
+    }
+   ],
+   "impostor": null,
+   "size": [
+    0.679,
+    0.856,
+    0.68
+   ],
+   "bounds": {
+    "min": [
+     -0.332,
+     0.012,
+     -0.345
+    ],
+    "max": [
+     0.346,
+     0.868,
+     0.335
+    ]
+   },
+   "materials": [
+    "paint_band",
+    "tire"
+   ],
+   "textures": {},
+   "source": "procedural"
+  },
+  {
+   "id": "cone",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "cone.glb",
+     "triangles": 80,
+     "vertices": 170,
+     "bytes": 8892
+    }
+   ],
+   "impostor": null,
+   "size": [
+    0.3,
+    0.5,
+    0.3
+   ],
+   "bounds": {
+    "min": [
+     -0.15,
+     0.0,
+     -0.15
+    ],
+    "max": [
+     0.15,
+     0.5,
+     0.15
+    ]
+   },
+   "materials": [
+    "cone_orange",
+    "cone_white"
+   ],
+   "textures": {},
+   "source": "procedural"
+  },
+  {
+   "id": "camera_tower",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "camera_tower.glb",
+     "triangles": 882,
+     "vertices": 1774,
+     "bytes": 73504
+    }
+   ],
+   "impostor": null,
+   "size": [
+    2.22,
+    7.745,
+    2.22
+   ],
+   "bounds": {
+    "min": [
+     -1.11,
+     0.0,
+     -1.11
+    ],
+    "max": [
+     1.11,
+     7.745,
+     1.11
+    ]
+   },
+   "materials": [
+    "glass",
+    "steel",
+    "steel_dark",
+    "wood"
+   ],
+   "textures": {},
+   "source": "procedural"
+  },
+  {
+   "id": "flag_pole",
+   "kind": "prop",
+   "lods": [
+    {
+     "file": "flag_pole.glb",
+     "triangles": 342,
+     "vertices": 718,
+     "bytes": 31284
+    }
+   ],
+   "impostor": null,
+   "size": [
+    2.059,
+    7.16,
+    0.44
+   ],
+   "bounds": {
+    "min": [
+     -0.209,
+     0.0,
+     -0.22
+    ],
+    "max": [
+     1.85,
+     7.16,
+     0.22
+    ]
+   },
+   "materials": [
+    "concrete",
+    "flag",
+    "steel"
+   ],
+   "textures": {},
+   "source": "procedural",
+   "nodes": [
+    "flag_pole",
+    "flag"
+   ]
+  }
+ ],
+ "textures": {
+  "bark_birch.webp": {
+   "width": 512,
+   "height": 512,
+   "channels": 3,
+   "bytes": 73618
+  },
+  "bark_birch_n.webp": {
+   "width": 512,
+   "height": 512,
+   "channels": 3,
+   "bytes": 83948
+  },
+  "bark_oak.webp": {
+   "width": 512,
+   "height": 512,
+   "channels": 3,
+   "bytes": 68814
+  },
+  "bark_oak_n.webp": {
+   "width": 512,
+   "height": 512,
+   "channels": 3,
+   "bytes": 85318
+  },
+  "bark_pine.webp": {
+   "width": 512,
+   "height": 512,
+   "channels": 3,
+   "bytes": 42472
+  },
+  "bark_pine_n.webp": {
+   "width": 512,
+   "height": 512,
+   "channels": 3,
+   "bytes": 71044
+  },
+  "broadleaf_a_imp.webp": {
+   "width": 2048,
+   "height": 304,
+   "channels": 4,
+   "bytes": 60286
+  },
+  "broadleaf_a_imp_n.webp": {
+   "width": 2048,
+   "height": 304,
+   "channels": 3,
+   "bytes": 56320
+  },
+  "broadleaf_b_imp.webp": {
+   "width": 2048,
+   "height": 384,
+   "channels": 4,
+   "bytes": 85886
+  },
+  "broadleaf_b_imp_n.webp": {
+   "width": 2048,
+   "height": 384,
+   "channels": 3,
+   "bytes": 71600
+  },
+  "crowd_atlas.webp": {
+   "width": 1024,
+   "height": 128,
+   "channels": 4,
+   "bytes": 14082
+  },
+  "foliage_atlas.webp": {
+   "width": 2048,
+   "height": 2048,
+   "channels": 4,
+   "bytes": 419828
+  },
+  "foliage_atlas_n.webp": {
+   "width": 1024,
+   "height": 1024,
+   "channels": 3,
+   "bytes": 117170
+  },
+  "grass_atlas.webp": {
+   "width": 1024,
+   "height": 160,
+   "channels": 4,
+   "bytes": 25344
+  },
+  "pine_a_imp.webp": {
+   "width": 1632,
+   "height": 512,
+   "channels": 4,
+   "bytes": 91948
+  },
+  "pine_a_imp_n.webp": {
+   "width": 1632,
+   "height": 512,
+   "channels": 3,
+   "bytes": 76272
+  },
+  "pine_b_imp.webp": {
+   "width": 2048,
+   "height": 316,
+   "channels": 4,
+   "bytes": 40900
+  },
+  "pine_b_imp_n.webp": {
+   "width": 2048,
+   "height": 316,
+   "channels": 3,
+   "bytes": 40362
+  },
+  "rock_a_d.webp": {
+   "width": 1024,
+   "height": 1024,
+   "channels": 3,
+   "bytes": 192238
+  },
+  "rock_a_n.webp": {
+   "width": 1024,
+   "height": 1024,
+   "channels": 3,
+   "bytes": 213422
+  },
+  "rock_b_d.webp": {
+   "width": 1024,
+   "height": 1024,
+   "channels": 3,
+   "bytes": 69436
+  },
+  "rock_b_n.webp": {
+   "width": 1024,
+   "height": 1024,
+   "channels": 3,
+   "bytes": 123546
+  },
+  "rock_c_d.webp": {
+   "width": 1024,
+   "height": 1024,
+   "channels": 3,
+   "bytes": 162156
+  },
+  "rock_c_n.webp": {
+   "width": 1024,
+   "height": 1024,
+   "channels": 3,
+   "bytes": 158516
+  }
+ },
+ "credits": [
+  {
+   "what": "bark textures + rock scans",
+   "source": "Poly Haven (polyhaven.com)",
+   "license": "CC0-1.0"
+  }
+ ],
+ "totalBytes": 5187042
+}

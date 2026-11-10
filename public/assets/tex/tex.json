@@ -1,0 +1,107 @@
+{
+ "asphalt": {
+  "albedo": "asphalt_d.jpg",
+  "normalRough": "asphalt_nr.jpg",
+  "avgLinear": [
+   0.013255803845822811,
+   0.009765292517840862,
+   0.008811425417661667
+  ],
+  "roughMean": 0.8313045090320064,
+  "source": {
+   "name": "asphalt_track",
+   "url": "https://polyhaven.com/a/asphalt_track",
+   "license": "CC0"
+  }
+ },
+ "grass": {
+  "albedo": "grass_d.jpg",
+  "normalRough": "grass_nr.jpg",
+  "avgLinear": [
+   0.32585957646369934,
+   0.2398204505443573,
+   0.10516390949487686
+  ],
+  "roughMean": 0.6850457808550666,
+  "source": {
+   "name": "leafy_grass",
+   "url": "https://polyhaven.com/a/leafy_grass",
+   "license": "CC0"
+  }
+ },
+ "rock": {
+  "albedo": "rock_d.jpg",
+  "normalRough": "rock_nr.jpg",
+  "avgLinear": [
+   0.23641468584537506,
+   0.14626877009868622,
+   0.08179529756307602
+  ],
+  "roughMean": 0.818271921195236,
+  "source": {
+   "name": "rock_face_03",
+   "url": "https://polyhaven.com/a/rock_face_03",
+   "license": "CC0"
+  }
+ },
+ "gravel": {
+  "albedo": "gravel_d.jpg",
+  "normalRough": "gravel_nr.jpg",
+  "avgLinear": [
+   0.4306905269622803,
+   0.4090915322303772,
+   0.35342463850975037
+  ],
+  "roughMean": 0.4730728411207012,
+  "source": {
+   "name": "gravel_floor_02",
+   "url": "https://polyhaven.com/a/gravel_floor_02",
+   "license": "CC0"
+  }
+ },
+ "dirt": {
+  "albedo": "dirt_d.jpg",
+  "normalRough": null,
+  "avgLinear": [
+   0.15063102543354034,
+   0.10522099584341049,
+   0.05876559764146805
+  ],
+  "roughMean": 0.9012851341097963,
+  "source": {
+   "name": "forest_ground_04",
+   "url": "https://polyhaven.com/a/forest_ground_04",
+   "license": "CC0"
+  }
+ },
+ "sand": {
+  "albedo": "sand_d.jpg",
+  "normalRough": null,
+  "avgLinear": [
+   0.22947445511817932,
+   0.17453902959823608,
+   0.10781800001859665
+  ],
+  "roughMean": 0.9630502588608686,
+  "source": {
+   "name": "coast_sand_01",
+   "url": "https://polyhaven.com/a/coast_sand_01",
+   "license": "CC0"
+  }
+ },
+ "concrete": {
+  "albedo": "concrete_d.jpg",
+  "normalRough": null,
+  "avgLinear": [
+   0.1988377571105957,
+   0.16617627441883087,
+   0.11021175980567932
+  ],
+  "roughMean": 0.5171355303596048,
+  "source": {
+   "name": "concrete_floor_02",
+   "url": "https://polyhaven.com/a/concrete_floor_02",
+   "license": "CC0"
+  }
+ }
+}

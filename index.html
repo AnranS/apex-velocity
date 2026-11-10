@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#05070b" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description" content="极速之巅 APEX VELOCITY — 浏览器里的 3D 赛车：赤霞湾国际赛道，漂移攒氮气，冲线夺冠。" />
+    <title>极速之巅 · APEX VELOCITY</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305070b'/%3E%3Cpath d='M14 50 30 12h9L27 50z' fill='%23f4f6f9'/%3E%3Cpath d='M33 50 45 22h9L42 50z' fill='%23ff5326'/%3E%3C/svg%3E" />
+    <style>
+      html, body { margin: 0; height: 100%; background: #05070b; overflow: hidden; overscroll-behavior: none; }
+      #app { position: fixed; inset: 0; }
+      #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; }
+      #ui { position: absolute; inset: 0; pointer-events: none; }
+      /* static splash shown until the UI layer mounts */
+      #boot { position: absolute; inset: 0; display: grid; place-items: center; color: #f4f6f9; font: italic 800 clamp(28px, 6vw, 96px)/0.9 'Avenir Next Condensed', 'Arial Narrow', 'PingFang SC', sans-serif; letter-spacing: 0.02em; background: linear-gradient(160deg, #0a0d13, #020305); }
+      #boot span { color: #ff5326; }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="gl"></canvas>
+      <div id="ui"><div id="boot"><div>APEX <span>VELOCITY</span></div></div></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

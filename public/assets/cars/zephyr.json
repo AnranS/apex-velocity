@@ -1,0 +1,92 @@
+{
+ "id": "zephyr",
+ "displayName": "ZEPHYR RX",
+ "length": 4.344,
+ "width": 1.889,
+ "widthWithMirrors": 2.023,
+ "height": 1.37,
+ "roofHeight": 1.297,
+ "wheelbase": 2.52,
+ "axleFrontZ": 1.26,
+ "axleRearZ": -1.26,
+ "trackFront": 1.6,
+ "trackRear": 1.58,
+ "wheelRadiusFront": 0.325,
+ "wheelRadiusRear": 0.335,
+ "wheelWidthFront": 0.245,
+ "wheelWidthRear": 0.285,
+ "rideHeight": 0.1004,
+ "bodyBox": {
+  "min": [
+   -1.0115,
+   0.072,
+   -2.197
+  ],
+  "max": [
+   1.0117,
+   1.37,
+   2.1469
+  ]
+ },
+ "points": {
+  "headlightL": [
+   0.68,
+   0.57,
+   1.82
+  ],
+  "headlightR": [
+   -0.68,
+   0.57,
+   1.82
+  ],
+  "taillightL": [
+   0.57,
+   0.795,
+   -2.13
+  ],
+  "taillightR": [
+   -0.57,
+   0.795,
+   -2.13
+  ],
+  "exhaustL": [
+   0.085,
+   0.6,
+   -2.16
+  ],
+  "exhaustR": [
+   -0.085,
+   0.6,
+   -2.16
+  ],
+  "camHood": [
+   0.0,
+   0.94,
+   0.95
+  ],
+  "camCockpit": [
+   0.35,
+   1.02,
+   -0.18
+  ],
+  "camBumper": [
+   0.0,
+   0.4,
+   2.12
+  ],
+  "wingCenter": [
+   0.0,
+   1.285,
+   -2.02
+  ]
+ },
+ "triangles": {
+  "lod0": 151553,
+  "lod1": 16914
+ },
+ "defaultPaint": [
+  0.8,
+  0.5,
+  0.02
+ ]
+}
